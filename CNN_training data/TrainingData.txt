@@ -1,1 +1,0 @@
-This is the training data, mostly consisting of the main labels as directories with each containing images in .ppm format
