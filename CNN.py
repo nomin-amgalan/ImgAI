@@ -4,7 +4,15 @@ CNN model for classifrying the overall image type
 Datasets used:
  - https://www.kaggle.com/ikarus777/best-artworks-of-all-time/version/1
 
+References:
+- https://medium.com/@waleedka/traffic-sign-recognition-with-tensorflow-629dffc391a6
+
+For converting to PPM:
+- https://onlineconvertfree.com/convert-format/jpeg-to-ppm/
 '''
+
+
+# Need to import saved model variables 
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -28,7 +36,9 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 classes = {4: "Photos", 3: "Screenshots", 1: "Paintings", 2: "Other"}
+
 numOfClasses = len(classes)
+
 training_path = "CNN_training_data"
 testing_path = "CNN_testing_data"
 main_path = "/Users/nominamgalan/Desktop/ImgAI"
@@ -45,7 +55,7 @@ def load_data(data_directory):
         label_directory = os.path.join(data_directory, d)
         file_names = [os.path.join(label_directory, f) 
                       for f in os.listdir(label_directory) 
-                      if f.endswith(".ppm")]                    # Fix the extension
+                      if f.endswith(".ppm")]                   
         for f in file_names:
             
             info = skimage.data.imread(f)
@@ -59,9 +69,7 @@ def load_data(data_directory):
 training_data_dir = os.path.join(main_path, training_path)
 images, labels = load_data(training_data_dir)
 images1k = [transform.resize(image, (1000, 1000)) for image in images]
-print(type(images1k))
-#images1k = images1k.reshape(1000, 1000)
-
+#print(type(images1k))
 images1k = np.asarray(images1k)
 images1k = rgb2gray(images1k)
 
@@ -126,7 +134,6 @@ test_images1k = [transform.resize(image, (1000, 1000)) for image in test_images]
 test_images1k = rgb2gray(np.array(test_images1k))
 
 # RUNNING TESTING
-
 
 print("TEST IMAGES READY")
 
