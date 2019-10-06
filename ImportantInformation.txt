@@ -1,0 +1,1 @@
+- Lacking the .json file for GOOGLE_APPLICATION_CREDENTIALS variable 
