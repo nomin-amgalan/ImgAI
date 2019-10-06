@@ -1,5 +1,0 @@
-Testing data.
-
-Includes labels and their corresponding images in .ppm format.
-
-For testing purposes
